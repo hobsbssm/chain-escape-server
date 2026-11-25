@@ -11,7 +11,7 @@
 FROM node:20-slim AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install --no-audit --no-fund
+RUN npm install --legacy-peer-deps --no-audit --no-fund
 COPY tsconfig.json vite.config.ts index.html ./
 COPY public ./public
 COPY src ./src
@@ -22,7 +22,7 @@ FROM node:20-slim
 WORKDIR /app
 ENV NODE_ENV=production
 COPY package.json package-lock.json ./
-RUN npm install --omit=dev --no-audit --no-fund
+RUN npm install --legacy-peer-deps --omit=dev --no-audit --no-fund
 COPY server.ts ./
 COPY src/shared ./src/shared
 COPY --from=build /app/dist ./dist

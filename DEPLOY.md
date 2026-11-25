@@ -11,8 +11,10 @@
    Push this project to a GitHub repository (private or public).
 3. في لوحة Render: **New + → Blueprint** → اختر المستودع. سيكتشف Render ملف `render.yaml` تلقائياً وينشئ الخدمة.
    In the Render dashboard: **New + → Blueprint** → pick the repository. Render auto-detects `render.yaml` and creates the service.
-   - النوع: **Free Web Service** — الخطة `free`، أمر البناء `npm install && npm run build`، أمر التشغيل `npm start`.
-     Type: **Free Web Service** — plan `free`, build command `npm install && npm run build`, start command `npm start`.
+   - النوع: **Free Web Service** — الخطة `free`، أمر البناء `npm install --legacy-peer-deps && npm run build`، أمر التشغيل `npm start`.
+     Type: **Free Web Service** — plan `free`, build command `npm install --legacy-peer-deps && npm run build`, start command `npm start`.
+     (ملاحظة: `--legacy-peer-deps` ضروري لأن vite 8 يطلب esbuild ‏^0.27/0.28 بينما المشروع يثبّت ‏^0.25 — بدونه يفشل `npm install`.)
+     (Note: `--legacy-peer-deps` is required because vite 8 wants esbuild ^0.27/0.28 while the project pins ^0.25 — plain `npm install` fails to resolve.)
    - متغيرات البيئة: `NODE_ENV=production` (موجود في `render.yaml`). **لا تضبط `PORT` يدوياً** — Render يحقنه تلقائياً.
      Environment variables: `NODE_ENV=production` (already in `render.yaml`). **Do not set `PORT` manually** — Render injects it automatically.
 4. انتظر اكتمال النشر (أول مرة: بضع دقائق)، ثم افتح:
