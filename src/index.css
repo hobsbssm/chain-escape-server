@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Cairo', 'Outfit', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: var(--font-display);
+    touch-action: none;
+  }
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.game-btn-primary {
+  background: linear-gradient(180deg, #ff9924 0%, #ea580c 100%);
+  box-shadow: 0 4px 0 #9a3412, 0 10px 24px rgba(234, 88, 12, 0.38);
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), filter 140ms ease;
+}
+
+.game-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.game-btn-primary:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #9a3412, 0 4px 12px rgba(234, 88, 12, 0.3);
+}
+
+.game-btn-secondary {
+  background: rgba(15, 23, 42, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 0 rgba(2, 6, 23, 0.75);
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), background-color 140ms ease, border-color 140ms ease;
+}
+
+.game-btn-secondary:hover:not(:disabled) {
+  background: rgba(30, 41, 59, 0.92);
+  border-color: rgba(251, 146, 60, 0.55);
+  transform: translateY(-1px);
+}
+
+.game-btn-secondary:active:not(:disabled) {
+  transform: translateY(2px);
+}

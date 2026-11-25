@@ -1,0 +1,15 @@
+# Chain Escape — Render blueprint (free tier)
+# Usage: push this repo to GitHub, then in Render Dashboard:
+#   New + -> Blueprint -> select the repo (render.yaml is auto-detected).
+# Render injects PORT automatically; do not set it manually.
+services:
+  - type: web
+    name: chain-escape-server
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
